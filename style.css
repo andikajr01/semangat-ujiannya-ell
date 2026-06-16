@@ -1,0 +1,211 @@
+/* ==========================================
+   1. PENGATURAN HALAMAN UTAMA (BODY)
+   ========================================== */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(255,225,232,0.72), rgba(255,209,220,0.72)),
+    url("doraemon.jpg") no-repeat center center;
+
+  background-size: cover;
+  overflow: hidden;
+}
+
+/* background lucu biar nggak polos */
+.bg-lights {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-lights span {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff4f81;
+  transform: rotate(-45deg);
+  animation: loveFloat 6.5s ease-in-out infinite;
+}
+
+.bg-lights span::before,
+.bg-lights span::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.bg-lights span::before {
+  top: -10px;
+  left: 0;
+}
+
+.bg-lights span::after {
+  top: 0;
+  left: 10px;
+}
+
+
+/* Love-bubbles (lebih banyak) */
+.bg-lights span:nth-child(1)  { left: 8%;  top: 18%; animation-delay: 0s;   background: rgba(84,160,255,0.55);} 
+.bg-lights span:nth-child(2)  { left: 18%; top: 65%; animation-delay: 0.4s; background: rgba(242,201,76,0.55);} 
+.bg-lights span:nth-child(3)  { left: 32%; top: 22%; animation-delay: 0.8s; background: rgba(47,128,237,0.55);} 
+.bg-lights span:nth-child(4)  { left: 46%; top: 60%; animation-delay: 1.2s; background: rgba(235,91,139,0.55);} 
+.bg-lights span:nth-child(5)  { left: 62%; top: 28%; animation-delay: 1.6s; background: rgba(155,81,224,0.55);} 
+.bg-lights span:nth-child(6)  { left: 74%; top: 74%; animation-delay: 2.0s; background: rgba(58,166,111,0.55);} 
+.bg-lights span:nth-child(7)  { left: 10%; top: 78%; animation-delay: 2.4s; background: rgba(255,79,129,0.55);} 
+.bg-lights span:nth-child(8)  { left: 26%; top: 35%; animation-delay: 2.8s; background: rgba(242,201,76,0.55);} 
+.bg-lights span:nth-child(9)  { left: 40%; top: 80%; animation-delay: 3.2s; background: rgba(47,128,237,0.55);} 
+.bg-lights span:nth-child(10) { left: 55%; top: 32%; animation-delay: 3.6s; background: rgba(235,91,139,0.55);} 
+.bg-lights span:nth-child(11) { left: 66%; top: 55%; animation-delay: 4.0s; background: rgba(155,81,224,0.55);} 
+.bg-lights span:nth-child(12) { left: 82%; top: 40%; animation-delay: 4.4s; background: rgba(58,166,111,0.55);} 
+
+
+@keyframes loveFloat {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.9) rotate(0deg);
+    opacity: 0.15;
+    border-radius: 6px;
+  }
+  20% {
+    opacity: 0.6;
+    /* bentuk love lebih kelihatan */
+    border-radius: 0% 50% 50% 50% / 0% 50% 50% 50%;
+  }
+  50% {
+    transform: translateY(-30vh) translateX(16px) scale(1.15) rotate(12deg);
+    opacity: 0.4;
+    border-radius: 0% 55% 55% 55% / 0% 55% 55% 55%;
+  }
+
+  100% {
+    transform: translateY(-65vh) translateX(-14px) scale(0.95) rotate(-10deg);
+    opacity: 0.08;
+    border-radius: 12px;
+  }
+}
+
+
+/* ==========================================
+
+   2. TOMBOL AWAL (START BUTTON)
+   ========================================== */
+#startBtn {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  background: #ff4f81;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(255, 79, 129, 0.4);
+  transition: all 0.3s ease;
+}
+
+#startBtn:hover {
+  background: #ff2e63;
+  transform: scale(1.1);
+}
+
+/* ==========================================
+   3. KONTEN UTAMA (YANG MUNCUL SETELAH DIKLIK)
+   ========================================== */
+.content {
+  display: none;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  font-family: "Pacifico", cursive;
+  color: #ff2e63;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #4a4a4a;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+/* ==========================================
+   4. GABUNGAN ANIMASI LOVE BERGELOMBANG (AKURAT)
+   ========================================== */
+.heart-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  transform: scale(0.9);
+}
+
+.heart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 200px;
+}
+
+.heart-piece {
+  width: 16px;
+  border-radius: 10px;
+  height: 36px;           /* Tinggi awal: sejajar rata */
+  transform: translateY(0px);
+  animation: loveBeat 3s ease-in-out infinite;
+}
+
+/* Warna dan jeda waktu tiap bar agar membuka satu persatu */
+.heart-piece:nth-child(1)  { background: #3aa66f; animation-delay: 0.00s; }
+.heart-piece:nth-child(2)  { background: #f2c94c; animation-delay: 0.04s; }
+.heart-piece:nth-child(3)  { background: #f2994a; animation-delay: 0.08s; }
+.heart-piece:nth-child(4)  { background: #eb5b8b; animation-delay: 0.12s; }
+.heart-piece:nth-child(5)  { background: #9b51e0; animation-delay: 0.16s; }
+.heart-piece:nth-child(6)  { background: #2f80ed; animation-delay: 0.20s; }
+.heart-piece:nth-child(7)  { background: #3aa66f; animation-delay: 0.24s; }
+.heart-piece:nth-child(8)  { background: #f2c94c; animation-delay: 0.28s; }
+.heart-piece:nth-child(9)  { background: #f2994a; animation-delay: 0.32s; }
+
+/* Set koordinat tinggi & posisi masing-masing bar saat membentuk LOVE */
+.heart-piece:nth-child(1)  { --love-h: 64px;  --love-y: 0px;   }
+.heart-piece:nth-child(2)  { --love-h: 110px; --love-y: -8px;  }
+.heart-piece:nth-child(3)  { --love-h: 150px; --love-y: -12px; }
+.heart-piece:nth-child(4)  { --love-h: 180px; --love-y: 10px;  }
+.heart-piece:nth-child(5)  { --love-h: 165px; --love-y: 30px;  } /* Batang tengah lekukan dalam */
+.heart-piece:nth-child(6)  { --love-h: 180px; --love-y: 10px;  }
+.heart-piece:nth-child(7)  { --love-h: 150px; --love-y: -12px; }
+.heart-piece:nth-child(8)  { --love-h: 110px; --love-y: -8px;  }
+.heart-piece:nth-child(9)  { --love-h: 64px;  --love-y: 0px;   }
+
+/* Proses transisi membuka bentuk love lalu menutup kembali jadi sejajar */
+@keyframes loveBeat {
+  0%   { height: 36px; transform: translateY(0px); }
+  35%  { height: var(--love-h); transform: translateY(var(--love-y)); }
+  65%  { height: var(--love-h); transform: translateY(var(--love-y)); }
+  100% { height: 36px; transform: translateY(0px); }
+}
